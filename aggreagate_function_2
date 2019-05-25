@@ -1,0 +1,56 @@
+SELECT medium, COUNT(*)
+FROM met
+WHERE medium LIKE '%gold%'
+	OR medium LIKE '%silver%'
+GROUP BY 1
+
+ORDER BY 2 DESC
+LIMIT 5;
+
+
+SELECT category, COUNT(*)
+FROM met
+GROUP BY 1
+HAVING COUNT(*) > 100
+ORDER BY 2 DESC
+LIMIT 5;
+
+
+SELECT country, COUNT(*)
+FROM met
+GROUP BY 1
+ORDER BY 2 DESC
+LIMIT 10;
+
+WITH oldest AS (
+SELECT MIN(date) AS min_date
+FROM met)
+SELECT title, medium, date, min_date
+FROM met, oldest
+WHERE date = min_date
+LIMIT 10;
+
+SELECT title, medium, MIN(date)
+FROM met;
+
+SELECT COUNT(*)
+FROM met
+WHERE category LIKE "%celery%";
+
+SELECT DISTINCT category
+FROM met
+WHERE category LIKE "%celery%"
+
+ORDER BY 1
+LIMIT 20;
+
+
+SELECT COUNT(*)
+FROM met
+WHERE department LIKE "%American Decorative%";
+
+
+SELECT *
+ FROM met
+ LIMIT 10;
+ 
